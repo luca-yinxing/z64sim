@@ -166,6 +166,20 @@ public class SettingsController extends Controller {
         getInstance().settings.setWindowSizeX(dimension.width);
         getInstance().settings.setWindowSizeY(dimension.height);
     }
+    public static void setFontSizeCompiler(int value) {
+        getInstance().settings.setFontSizeCompiler(value);
+    }
+
+    public static void setFontSizeEditor(int value) {
+        getInstance().settings.setFontSizeEditor(value);
+    }
+    public static int getFontSizeEditor() {
+        return getInstance().settings.getFontSizeEditor();
+    }
+
+    public static int getFontSizeCompiler() {
+        return getInstance().settings.getFontSizeCompiler();
+    }
 
     public static String getFileLastDir() {
         return getInstance().settings.getFileLastDir();
@@ -191,6 +205,8 @@ public class SettingsController extends Controller {
         private int windowSizeX;
         private int windowSizeY;
         private String fileLastDir;
+        private int fontSizeEditor;
+        private  int fontSizeCompiler;
 
         private Settings() {
             // Configuration defaults
@@ -202,6 +218,8 @@ public class SettingsController extends Controller {
             this.windowSizeX = Integer.parseInt(PropertyBroker.getPropertyValue("z64sim.ui.minSizeX"));
             this.windowSizeY = Integer.parseInt(PropertyBroker.getPropertyValue("z64sim.ui.minSizeY"));
             this.fileLastDir = null;
+            this.fontSizeEditor = Integer.parseInt(PropertyBroker.getPropertyValue("z64sim.ui.fontSizeEditor"));
+            this.fontSizeCompiler = Integer.parseInt(PropertyBroker.getPropertyValue("z64sim.ui.fontSizeCompiler"));
         }
 
         protected static Settings loadConfiguration() throws SettingsException {
@@ -311,6 +329,22 @@ public class SettingsController extends Controller {
 
         public void setFileLastDir(String fileLastDir) {
             this.fileLastDir = fileLastDir;
+        }
+        
+        public int getFontSizeEditor() {
+            return fontSizeEditor;
+        }
+
+        public void setFontSizeEditor(int fontSizeEditor) {
+            this.fontSizeEditor = fontSizeEditor;
+        }
+
+        public int getFontSizeCompiler() {
+            return fontSizeCompiler;
+        }
+
+        public void setFontSizeCompiler(int fontSizeCompiler) {
+            this.fontSizeCompiler = fontSizeCompiler;
         }
     }
 }
